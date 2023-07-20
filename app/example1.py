@@ -131,17 +131,16 @@ evaluator = RegressionEvaluator(labelCol='unit_price', metricName="r2")
 r2_score = evaluator.evaluate(predictions)
 print(f"R2 score: {r2_score}")
 
-best_model.stages[0].save("/app/model1")
 
 # Ghi kết quả vào file
-with open('/app/best_params1.txt', 'w') as f:
+with open('/app/best_params2.txt', 'w') as f:
     f.write('count: {}\n'.format(df.count()))
     for key, value in best_params.items():
         f.write('{}: {}\n'.format(key, value))
     f.write('RMSE: {}\n'.format(rmse))
     f.write('R2: {}'.format(r2_score))
 
+best_model.stages[0].save("/app/model1")
 
-    
 
 spark.stop()
